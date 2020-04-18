@@ -1,0 +1,12 @@
+fun main():integer = {
+    x = 2;
+    a = 1;
+    b = 2;
+    if x == 2 then c=a else c=b;
+    c;
+} where {
+    var x : integer
+    var a : integer
+    var b : integer
+    var c : integer
+}
