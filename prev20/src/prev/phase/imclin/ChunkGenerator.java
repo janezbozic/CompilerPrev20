@@ -89,8 +89,11 @@ public class ChunkGenerator extends AstFullVisitor<Object, Object> {
 			if (s instanceof ImcCJUMP){
 				int x = hash.get(((ImcCJUMP) s).negLabel) + 1;
 				int count = i + 1;
-				newStmts.add(count, new ImcLABEL(new MemLabel()));
+				MemLabel l = new MemLabel();
+				newStmts.add(count, new ImcLABEL(l));
 				count++;
+				newStmts.add(i, new ImcCJUMP(((ImcCJUMP) s).cond, ((ImcCJUMP) s).posLabel, l));
+				newStmts.remove(s);
 				while (x < stmts.size() && !(stmts.get(x) instanceof ImcLABEL)){
 					newStmts.add(count, stmts.get(x));
 					x++;
