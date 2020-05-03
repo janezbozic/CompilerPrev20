@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="54e978f7-4813-42ee-ad6b-39a6247475b0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prg/mojTest.p20" beforeDir="false" afterPath="$PROJECT_DIR$/prg/mojTest.p20" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prev/phase/asmgen/ExprGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prev/phase/asmgen/ExprGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prev/phase/asmgen/StmtGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prev/phase/asmgen/StmtGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prev/phase/synan/PrevParser.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/prev/phase/synan/PrevParser.g4" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +40,9 @@
       <updated>1588348616485</updated>
       <workItem from="1588348620522" duration="156000" />
       <workItem from="1588351242625" duration="1879000" />
+      <workItem from="1588435380488" duration="925000" />
+      <workItem from="1588436408918" duration="599000" />
+      <workItem from="1588491607375" duration="9646000" />
     </task>
     <servers />
   </component>
@@ -43,9 +50,13 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup" timestamp="1588348678315">
+    <state x="1248" y="258" width="374" height="589" key="#com.intellij.ide.util.MemberChooser" timestamp="1588499583652">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup/0.28.1920.1052@0.28.1920.1052" timestamp="1588348678315" />
+    <state x="1248" y="258" width="374" height="589" key="#com.intellij.ide.util.MemberChooser/0.28.1920.1052@0.28.1920.1052" timestamp="1588499583652" />
+    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup" timestamp="1588502125906">
+      <screen x="0" y="28" width="1920" height="1052" />
+    </state>
+    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup/0.28.1920.1052@0.28.1920.1052" timestamp="1588502125906" />
   </component>
 </project>

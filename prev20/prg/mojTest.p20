@@ -1,12 +1,15 @@
 fun main():integer = {
-    x = 2;
-    a = 1;
-    b = 2;
-    if x == 2 then c=a else c=b;
-    c;
+   # x = 2;
+   # a = 1;
+   # b = 2;
+   tab[1][2] = 1;
+    b = tab[1][2];
+   # if x == 2 then c=a else c=b;
+    b;
 } where {
-    var x : integer
-    var a : integer
+	var tab : [10][10] integer
+    # var x : integer
+    # var a : integer
     var b : integer
-    var c : integer
+    # var c : integer
 }

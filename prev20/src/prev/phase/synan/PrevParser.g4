@@ -98,29 +98,29 @@ decl_args
 
 type
 	returns [AstType ast]
-	: KW_BOOLEAN { AstType t = new AstAtomType(new Location((PrevToken)$KW_BOOLEAN), AstAtomType.Type.BOOLEAN); } type_p[t]
+	: KW_BOOLEAN { AstType t = new AstAtomType(new Location((PrevToken)$KW_BOOLEAN), AstAtomType.Type.BOOLEAN); }
 	{
-		$ast = $type_p.ast;
+		$ast = t;
 	}
-	|  KW_CHAR { AstType t = new AstAtomType(new Location((PrevToken)$KW_CHAR), AstAtomType.Type.CHAR); } type_p[t]
+	|  KW_CHAR { AstType t = new AstAtomType(new Location((PrevToken)$KW_CHAR), AstAtomType.Type.CHAR); }
 	{
-		$ast = $type_p.ast;
+		$ast = t;
 	}
-	| KW_INTEGER { AstType t = new AstAtomType(new Location((PrevToken)$KW_INTEGER), AstAtomType.Type.INTEGER); } type_p[t]
+	| KW_INTEGER { AstType t = new AstAtomType(new Location((PrevToken)$KW_INTEGER), AstAtomType.Type.INTEGER); }
 	{
-		$ast = $type_p.ast;
+		$ast = t;
 	}
-	| KW_VOID { AstType t = new AstAtomType(new Location((PrevToken)$KW_VOID), AstAtomType.Type.VOID); } type_p[t]
+	| KW_VOID { AstType t = new AstAtomType(new Location((PrevToken)$KW_VOID), AstAtomType.Type.VOID); }
 	{
-		$ast = $type_p.ast;
+		$ast = t;
 	}
-	| IDENTIFIER { AstType t = new AstNameType(new Location((PrevToken)$IDENTIFIER), $IDENTIFIER.text); } type_p[t]
+	| IDENTIFIER { AstType t = new AstNameType(new Location((PrevToken)$IDENTIFIER), $IDENTIFIER.text); }
 	{
-		$ast = $type_p.ast;
+		$ast = t;
 	}
-	|SIM_TOP type { AstPtrType t = new AstPtrType (new Location((PrevToken)$SIM_TOP, $type.ast), $type.ast); } type_p[t]
+	|SIM_TOP type { AstPtrType t = new AstPtrType (new Location((PrevToken)$SIM_TOP, $type.ast), $type.ast); }
 	{
-		$ast = $type_p.ast;
+		$ast = t;
 	}
 	| SIM_LSQLBR IDENTIFIER SIM_COL type type_args SIM_RSQLBR {
 		Vector v = new Vector<AstCompDecl>();
@@ -129,27 +129,18 @@ type
 		v.addAll($type_args.ast);
 		AstRecType t = new AstRecType(new Location((PrevToken)$SIM_LSQLBR, (PrevToken)$SIM_RSQLBR), new AstTrees<AstCompDecl>(v));
 		$ast = t;
-	} type_p[t]
-	{
-		$ast = $type_p.ast;
 	}
-	
-	|SIM_LPAR type SIM_RPAR {AstType t = $type.ast; } type_p[t]
 	{
-		$ast = $type_p.ast;
+		$ast = t;
 	}
-	;
-
-type_p [AstType t]
-	returns [AstType ast]
-	: SIM_LSQRBR declaration_binder SIM_RSQRBR { AstArrType t1 = new AstArrType(new Location($t, (PrevToken)$SIM_RSQRBR), $t, $declaration_binder.ast); } type_p[t1]
+	|SIM_LPAR type SIM_RPAR {AstType t = $type.ast; }
 	{
-		$ast = $type_p.ast;
+		$ast = t;
 	}
-	|
-	{
-		$ast = $t;
-	}
+	| SIM_LSQRBR declaration_binder SIM_RSQRBR type { AstArrType t1 = new AstArrType(new Location((PrevToken)$SIM_LSQRBR, (PrevToken)$SIM_RSQRBR), $type.ast, $declaration_binder.ast); }
+    {
+        $ast = t1;
+    }
 	;
 
 type_args
