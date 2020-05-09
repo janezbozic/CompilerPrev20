@@ -370,7 +370,7 @@ public class TypeResolver5 extends AstFullVisitor<Object, TypeResolver2.Mode> {
     public SemType visit(AstFunDecl funDecl, TypeResolver2.Mode mode) {
         SemType t2 = ofType.get(funDecl.expr());
         SemType t1 = (SemType) funDecl.expr().accept(this, mode);
-        if (!(t1.actualType() instanceof SemVoid || t1.actualType().getClass().equals(t2.actualType().getClass()))){
+        if (!(t1.actualType().getClass().equals(t2.actualType().getClass()))){
             throw new Report.Error(funDecl, "Return type of a function doesn't match.");
         }
         return t2.actualType();

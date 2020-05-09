@@ -6,9 +6,6 @@ import prev.data.mem.*;
 
 /**
  * An assembly move.
- * 
- * @author sliva
- *
  */
 public class AsmMOVE extends AsmOPER {
 

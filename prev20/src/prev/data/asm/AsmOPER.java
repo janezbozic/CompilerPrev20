@@ -15,11 +15,10 @@ import prev.data.mem.*;
  * For instance:
  * 
  * ADD T1,T2,T3 => "ADD `d0,`s0,`s1" & uses={T2,T3} & defs={T1}
- * SETL T1,3 => "SETL `d0,3" & uses={} & defs={T1}
- * SETML T1,3 => "SETL `d0,3" & uses={T1} & defs={T1}
  * 
- * @author sliva
- *
+ * SETL T1,3 => "SETL `d0,3" & uses={} & defs={T1}
+ * 
+ * SETML T1,3 => "SETL `d0,3" & uses={T1} & defs={T1}
  */
 public class AsmOPER extends AsmInstr {
 
@@ -36,6 +35,18 @@ public class AsmOPER extends AsmInstr {
 	private final Vector<MemLabel> jumps;
 
 	/**
+	 * The set of temporaries that are live in the control flow graph edges leading
+	 * to this instruction.
+	 */
+	private final HashSet<MemTemp> in;
+
+	/**
+	 * The set of temporaries that are live in the control flow graph edges leading
+	 * from this instruction.
+	 */
+	private final HashSet<MemTemp> out;
+
+	/**
 	 * Constructs a new assembly instruction.
 	 * 
 	 * @param instr The string representation of the instruction.
@@ -48,6 +59,8 @@ public class AsmOPER extends AsmInstr {
 		this.uses = uses == null ? new Vector<MemTemp>() : uses;
 		this.defs = defs == null ? new Vector<MemTemp>() : defs;
 		this.jumps = jumps == null ? new Vector<MemLabel>() : jumps;
+		this.in = new HashSet<MemTemp>();
+		this.out = new HashSet<MemTemp>();
 	}
 
 	@Override
@@ -63,6 +76,26 @@ public class AsmOPER extends AsmInstr {
 	@Override
 	public Vector<MemLabel> jumps() {
 		return new Vector<MemLabel>(jumps);
+	}
+
+	@Override
+	public HashSet<MemTemp> in() {
+		return new HashSet<MemTemp>(in);
+	}
+
+	@Override
+	public HashSet<MemTemp> out() {
+		return new HashSet<MemTemp>(out);
+	}
+
+	@Override
+	public void addInTemps(HashSet<MemTemp> in) {
+		this.in.addAll(in);
+	}
+
+	@Override
+	public void addOutTemp(HashSet<MemTemp> out) {
+		this.out.addAll(out);
 	}
 
 	@Override

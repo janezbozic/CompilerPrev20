@@ -5,13 +5,11 @@ import prev.data.mem.*;
 
 /**
  * An assembly label.
- * 
- * @author sliva
  */
 public class AsmLABEL extends AsmOPER {
 
 	/** The label. */
-	private final MemLabel label;
+	public final MemLabel label;
 
 	public AsmLABEL(MemLabel label) {
 		super("", null, null, null);
