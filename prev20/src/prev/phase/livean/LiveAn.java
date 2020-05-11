@@ -50,7 +50,6 @@ public class LiveAn extends Phase {
 					instr.addInTemps(in);
 
 					out.clear();
-					out.addAll(instr.defs());
 					Vector<AsmInstr> nexts = new Vector<>();
 
 					if (instr.jumps() != null) {
