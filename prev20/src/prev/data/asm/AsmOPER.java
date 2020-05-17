@@ -118,4 +118,49 @@ public class AsmOPER extends AsmInstr {
 		return instruction;
 	}
 
+	/**
+	 * Returns the string representation of the instruction.
+	 *
+	 * @return The string representation of the instruction.
+	 */
+	public String instr() {
+		return instr;
+	}
+
+	/**
+	 * Removes all temporaries from the set of temporaries that are live in the
+	 * control flow graph edges leading to this instruction.
+	 */
+	public void removeAllFromIn() {
+		in.clear();
+	}
+
+	/**
+	 * Removes a temporary variable from the set of temporaries that are live in the
+	 * control flow graph edges leading to this instruction.
+	 *
+	 * @param temp A temporary variable to be removed.
+	 */
+	public void removeFromIn(MemTemp temp) {
+		in.remove(temp);
+	}
+
+	/**
+	 * Removes all temporaries from the set of temporaries that are live in the
+	 * control flow graph edges leading from this instruction.
+	 */
+	public void removeAllFromOut() {
+		out.clear();
+	}
+
+	/**
+	 * Removes a temporary variable from the set of temporaries that are live in the
+	 * control flow graph edges leading from this instruction.
+	 *
+	 * @param temp A temporary variable to be removed.
+	 */
+	public void removeFromOut(MemTemp temp) {
+		out.remove(temp);
+	}
+
 }

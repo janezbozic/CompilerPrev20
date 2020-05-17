@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="54e978f7-4813-42ee-ad6b-39a6247475b0" name="Default Changelist" comment="">
+    <list default="true" id="f8882136-713d-4797-9878-088ab3b80d2d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/xsl/regall.xsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/prev/phase/lexan/PrevLexer.interp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/prev/phase/lexan/PrevLexer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/prev/phase/lexan/PrevLexer.tokens" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/prev/phase/regall/RegAll.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/prev/phase/regall/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/prev/phase/synan/PrevParser.interp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/prev/phase/synan/PrevParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/prev/phase/synan/PrevParser.tokens" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prg/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/prg/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prg/basic.p20" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prg/combs.p20" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prg/fibonacci.p20" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prg/gameOfLife.p20" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prg/hello-world.p20" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/prg/mojTest.p20" beforeDir="false" afterPath="$PROJECT_DIR$/prg/mojTest.p20" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prg/perms.p20" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prg/queens-1.p20" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prg/test-01.p20" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prg/testImc.p20" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prev/Compiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prev/Compiler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prev/data/asm/AsmOPER.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prev/data/asm/AsmOPER.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/prev/phase/asmgen/ExprGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prev/phase/asmgen/ExprGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/prev/phase/asmgen/StmtGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prev/phase/asmgen/StmtGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/prev/phase/synan/PrevParser.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/prev/phase/synan/PrevParser.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prev/phase/livean/LiveAn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prev/phase/livean/LiveAn.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +37,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1bJSHgMlT8H9ujGb0891SF842Xw" />
+  <component name="NamedScopeManager">
+    <scope name="Classles" pattern="!*.class||!*.html||!*.xml&amp;&amp;file[prev20]:*" />
+  </component>
+  <component name="ProjectId" id="1bteKESiDduvlFNm467oAoshAOa" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -28,21 +52,31 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
   </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="prev.Compiler" />
+      <module name="prev20" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="54e978f7-4813-42ee-ad6b-39a6247475b0" name="Default Changelist" comment="" />
-      <created>1588348616485</created>
+      <changelist id="f8882136-713d-4797-9878-088ab3b80d2d" name="Default Changelist" comment="" />
+      <created>1589455750520</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1588348616485</updated>
-      <workItem from="1588348620522" duration="156000" />
-      <workItem from="1588351242625" duration="1879000" />
-      <workItem from="1588435380488" duration="925000" />
-      <workItem from="1588436408918" duration="599000" />
-      <workItem from="1588491607375" duration="9646000" />
+      <updated>1589455750520</updated>
+      <workItem from="1589455754585" duration="1826000" />
+      <workItem from="1589458206213" duration="5345000" />
+      <workItem from="1589630412427" duration="13814000" />
+      <workItem from="1589648745760" duration="888000" />
+      <workItem from="1589649834023" duration="9759000" />
+      <workItem from="1589718481253" duration="21744000" />
     </task>
     <servers />
   </component>
@@ -50,13 +84,33 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1248" y="258" width="374" height="589" key="#com.intellij.ide.util.MemberChooser" timestamp="1588499583652">
+    <state x="755" y="415" width="785" height="421" key="#Scopes" timestamp="1589459355348">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state x="1248" y="258" width="374" height="589" key="#com.intellij.ide.util.MemberChooser/0.28.1920.1052@0.28.1920.1052" timestamp="1588499583652" />
-    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup" timestamp="1588502125906">
+    <state x="755" y="415" width="785" height="421" key="#Scopes/0.28.1920.1052@0.28.1920.1052" timestamp="1589459355348" />
+    <state x="721" y="321" width="467" height="464" key="#Web_Browsers" timestamp="1589472620186">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup/0.28.1920.1052@0.28.1920.1052" timestamp="1588502125906" />
+    <state x="721" y="321" width="467" height="464" key="#Web_Browsers/0.28.1920.1052@0.28.1920.1052" timestamp="1589472620186" />
+    <state x="418" y="212" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589657075780">
+      <screen x="0" y="28" width="1920" height="1052" />
+    </state>
+    <state x="418" y="212" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.28.1920.1052@0.28.1920.1052" timestamp="1589657075780" />
+    <state x="768" y="240" width="374" height="626" key="#com.intellij.ide.util.MemberChooser" timestamp="1589638826384">
+      <screen x="0" y="28" width="1920" height="1052" />
+    </state>
+    <state x="768" y="240" width="374" height="626" key="#com.intellij.ide.util.MemberChooser/0.28.1920.1052@0.28.1920.1052" timestamp="1589638826384" />
+    <state x="100" y="128" width="1720" height="852" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1589729552167">
+      <screen x="0" y="28" width="1920" height="1052" />
+    </state>
+    <state x="100" y="128" width="1720" height="852" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.28.1920.1052@0.28.1920.1052" timestamp="1589729552167" />
+    <state x="651" y="264" width="618" height="580" key="find.popup" timestamp="1589740060559">
+      <screen x="0" y="28" width="1920" height="1052" />
+    </state>
+    <state x="651" y="264" width="618" height="580" key="find.popup/0.28.1920.1052@0.28.1920.1052" timestamp="1589740060559" />
+    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup" timestamp="1589739991891">
+      <screen x="0" y="28" width="1920" height="1052" />
+    </state>
+    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup/0.28.1920.1052@0.28.1920.1052" timestamp="1589739991891" />
   </component>
 </project>

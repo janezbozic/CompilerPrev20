@@ -29,6 +29,10 @@ public class LiveAn extends Phase {
 				if (instr instanceof AsmLABEL){
 					labels.put(((AsmLABEL)instr).label, code.instrs.get(i+1));
 				}
+				else if (instr instanceof AsmOPER){
+					((AsmOPER)instr).removeAllFromIn();
+					((AsmOPER)instr).removeAllFromOut();
+				}
 			}
 		}
 
@@ -53,9 +57,10 @@ public class LiveAn extends Phase {
 					Vector<AsmInstr> nexts = new Vector<>();
 
 					if (instr.jumps() != null) {
-						for (int j = 0; j<instr.jumps().size(); j++)
+						for (int j = 0; j<instr.jumps().size(); j++) {
 							if (labels.get(instr.jumps().get(j)) != null)
 								nexts.add(labels.get(instr.jumps().get(j)));
+						}
 						if (instr.uses() != null && code.instrs.size() > i+1){
 							nexts.add(code.instrs.get(i+1));
 						}
@@ -71,9 +76,16 @@ public class LiveAn extends Phase {
 
 					instr.addOutTemp(out);
 
-					if (!(in.containsAll(oldIn) && oldIn.containsAll(in) && out.containsAll(oldOut) && oldOut.containsAll(out))){
+					boolean t = !(in.containsAll(oldIn) && oldIn.containsAll(in) && out.containsAll(oldOut) && oldOut.containsAll(out));
+					if (t){
 						zanka = true;
 					}
+
+					if (!zanka && i == code.instrs.size()-1) {
+						out.add(code.frame.RV);
+						instr.addOutTemp(out);
+					}
+
 				}
 			}
 		}

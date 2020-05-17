@@ -1,8 +1,5 @@
 fun main():void = {
-   tab[1][2] = 1;
-    b = tab[1][2];
-    b = 1;
+    b = 1+ 2 + 3 + 4 + 5;
 } where {
-	var tab : [10][10] integer
-    var b : integer
+    var b : integer 
 }

@@ -15,6 +15,7 @@ import prev.phase.imcgen.*;
 import prev.phase.imclin.*;
 import prev.phase.asmgen.*;
 import prev.phase.livean.*;
+import prev.phase.regall.*;
 
 /**
  * The compiler.
@@ -24,7 +25,7 @@ public class Compiler {
 	// COMMAND LINE ARGUMENTS
 
 	/** All valid phases of the compiler. */
-	private static final String phases = "none|lexan|synan|abstr|seman|memory|imcgen|imclin|asmgen|livean";
+	private static final String phases = "none|lexan|synan|abstr|seman|memory|imcgen|imclin|asmgen|livean|regall";
 
 	/** Values of command line arguments. */
 	private static HashMap<String, String> cmdLine = new HashMap<String, String>();
@@ -88,6 +89,12 @@ public class Compiler {
 					if (args[argc].matches("--xsl=.*")) {
 						if (cmdLine.get("--xsl") == null) {
 							cmdLine.put("--xsl", args[argc].replaceFirst("^[^=]*=", ""));
+							continue;
+						}
+					}
+					if (args[argc].matches("--num-regs=.*")) {
+						if (cmdLine.get("--num-regs") == null) {
+							cmdLine.put("--num-regs", args[argc].replaceFirst("^[^=]*=", ""));
 							continue;
 						}
 					}
@@ -214,6 +221,14 @@ public class Compiler {
 					livean.log();
 				}
 				if (Compiler.cmdLineArgValue("--target-phase").equals("livean"))
+					break;
+
+				// Register allocation.
+				try (RegAll regall = new RegAll()) {
+					regall.allocate();
+					regall.log();
+				}
+				if (Compiler.cmdLineArgValue("--target-phase").equals("regall"))
 					break;
 
 				break;

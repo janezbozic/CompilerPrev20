@@ -1,6 +1,8 @@
 package prev.phase.asmgen;
 
 import java.util.*;
+
+import prev.Compiler;
 import prev.data.mem.*;
 import prev.data.imc.code.expr.*;
 import prev.data.imc.visitor.*;
@@ -107,13 +109,15 @@ public class ExprGenerator implements ImcVisitor<MemTemp, Vector<AsmInstr>> {
             MemTemp temp = expr.accept(this, visArg);
             Vector<MemTemp> uses = new Vector<>();
             uses.add(temp);
-            visArg.add(new AsmOPER("STO `s0,$252," + offset , uses, null, null));
+            visArg.add(new AsmOPER("STO `s0,$254," + offset , uses, null, null));
         }
+
+        visArg.add(new AsmOPER("PUSHJ " + Integer.parseInt(Compiler.cmdLineArgValue("--num-regs")) + "," + call.label.name, null, null, jumps));
 
         MemTemp res = temp;
         Vector <MemTemp> defs = new Vector<>();
         defs.add(res);
-        visArg.add(new AsmOPER("LDO `d0,$252,0" , null, defs, null));
+        visArg.add(new AsmOPER("LDO `d0,$254,0" , null, defs, null));
 
         return res;
 
