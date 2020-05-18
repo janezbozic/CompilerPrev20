@@ -2,30 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f8882136-713d-4797-9878-088ab3b80d2d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/xsl/regall.xsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/prev/phase/lexan/PrevLexer.interp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/prev/phase/lexan/PrevLexer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/prev/phase/lexan/PrevLexer.tokens" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/prev/phase/regall/RegAll.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/prev/phase/regall/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/prev/phase/synan/PrevParser.interp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/prev/phase/synan/PrevParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/prev/phase/synan/PrevParser.tokens" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prg/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/prg/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prg/basic.p20" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prg/combs.p20" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prg/fibonacci.p20" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prg/gameOfLife.p20" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prg/hello-world.p20" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prg/mojTest.p20" beforeDir="false" afterPath="$PROJECT_DIR$/prg/mojTest.p20" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prg/perms.p20" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prg/queens-1.p20" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prg/test-01.p20" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prg/testImc.p20" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/prev/Compiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prev/Compiler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/prev/data/asm/AsmOPER.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prev/data/asm/AsmOPER.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/prev/phase/asmgen/ExprGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prev/phase/asmgen/ExprGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/prev/phase/livean/LiveAn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prev/phase/livean/LiveAn.java" afterDir="false" />
     </list>
@@ -77,11 +54,25 @@
       <workItem from="1589648745760" duration="888000" />
       <workItem from="1589649834023" duration="9759000" />
       <workItem from="1589718481253" duration="21744000" />
+      <workItem from="1589740677236" duration="93000" />
+      <workItem from="1589787406067" duration="3018000" />
     </task>
+    <task id="LOCAL-00001" summary="Narejena 11. naloga">
+      <created>1589740750636</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1589740750636</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Narejena 11. naloga" />
+    <option name="LAST_COMMIT_MESSAGE" value="Narejena 11. naloga" />
   </component>
   <component name="WindowStateProjectService">
     <state x="755" y="415" width="785" height="421" key="#Scopes" timestamp="1589459355348">
@@ -100,6 +91,18 @@
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
     <state x="768" y="240" width="374" height="626" key="#com.intellij.ide.util.MemberChooser/0.28.1920.1052@0.28.1920.1052" timestamp="1589638826384" />
+    <state x="492" y="67" width="925" height="972" key="CommitChangelistDialog2" timestamp="1589740750405">
+      <screen x="0" y="28" width="1920" height="1052" />
+    </state>
+    <state x="492" y="67" width="925" height="972" key="CommitChangelistDialog2/0.28.1920.1052@0.28.1920.1052" timestamp="1589740750405" />
+    <state x="100" y="128" width="1720" height="852" key="DiffContextDialog" timestamp="1589788173544">
+      <screen x="0" y="28" width="1920" height="1052" />
+    </state>
+    <state x="100" y="128" width="1720" height="852" key="DiffContextDialog/0.28.1920.1052@0.28.1920.1052" timestamp="1589788173544" />
+    <state x="555" y="289" width="800" height="527" key="Vcs.Push.Dialog.v2" timestamp="1589740760344">
+      <screen x="0" y="28" width="1920" height="1052" />
+    </state>
+    <state x="555" y="289" width="800" height="527" key="Vcs.Push.Dialog.v2/0.28.1920.1052@0.28.1920.1052" timestamp="1589740760344" />
     <state x="100" y="128" width="1720" height="852" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1589729552167">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
@@ -108,9 +111,9 @@
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
     <state x="651" y="264" width="618" height="580" key="find.popup/0.28.1920.1052@0.28.1920.1052" timestamp="1589740060559" />
-    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup" timestamp="1589739991891">
+    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup" timestamp="1589787939759">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup/0.28.1920.1052@0.28.1920.1052" timestamp="1589739991891" />
+    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup/0.28.1920.1052@0.28.1920.1052" timestamp="1589787939759" />
   </component>
 </project>

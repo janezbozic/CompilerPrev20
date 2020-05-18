@@ -58,16 +58,27 @@ public class LiveAn extends Phase {
 
 					if (instr.jumps() != null) {
 						for (int j = 0; j<instr.jumps().size(); j++) {
-							if (labels.get(instr.jumps().get(j)) != null)
+							if (labels.get(instr.jumps().get(j)) != null) {
 								nexts.add(labels.get(instr.jumps().get(j)));
+							}
+							if (instr.jumps().get(j) == code.exitLabel){
+								out.add(code.frame.RV);
+							}
 						}
 						if (instr.uses() != null && code.instrs.size() > i+1){
 							nexts.add(code.instrs.get(i+1));
+							if (code.instrs.get(i+1) instanceof AsmLABEL &&  ((AsmLABEL)code.instrs.get(i+1)).label == code.exitLabel){
+								out.add(code.frame.RV);
+							}
 						}
 					}
 					else {
-						if (code.instrs.size() > i+1)
-							nexts.add(code.instrs.get(i+1));
+						if (code.instrs.size() > i+1) {
+							nexts.add(code.instrs.get(i + 1));
+							if (code.instrs.get(i+1) instanceof AsmLABEL &&  ((AsmLABEL)code.instrs.get(i+1)).label == code.exitLabel){
+								out.add(code.frame.RV);
+							}
+						}
 					}
 
 					for (AsmInstr nextIn: nexts){
@@ -80,12 +91,6 @@ public class LiveAn extends Phase {
 					if (t){
 						zanka = true;
 					}
-
-					if (!zanka && i == code.instrs.size()-1) {
-						out.add(code.frame.RV);
-						instr.addOutTemp(out);
-					}
-
 				}
 			}
 		}

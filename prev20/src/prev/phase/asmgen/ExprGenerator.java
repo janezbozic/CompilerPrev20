@@ -112,7 +112,7 @@ public class ExprGenerator implements ImcVisitor<MemTemp, Vector<AsmInstr>> {
             visArg.add(new AsmOPER("STO `s0,$254," + offset , uses, null, null));
         }
 
-        visArg.add(new AsmOPER("PUSHJ " + Integer.parseInt(Compiler.cmdLineArgValue("--num-regs")) + "," + call.label.name, null, null, jumps));
+        visArg.add(new AsmOPER("PUSHJ $" + Integer.parseInt(Compiler.cmdLineArgValue("--num-regs")) + "," + call.label.name, null, null, jumps));
 
         MemTemp res = temp;
         Vector <MemTemp> defs = new Vector<>();
