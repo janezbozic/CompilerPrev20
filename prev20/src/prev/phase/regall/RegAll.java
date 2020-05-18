@@ -34,16 +34,13 @@ public class RegAll extends Phase {
 			HashMap<MemTemp, Vozlisce> graf = new HashMap<>();
 			while (true) {
 				graf = build(code.instrs);
-
-				@SuppressWarnings("unchecked")
-				HashMap<MemTemp, Vozlisce> modifiedGraf = (HashMap<MemTemp, Vozlisce>) graf.clone();
+				HashMap<MemTemp, Vozlisce> modifiedGraf = new HashMap<MemTemp, Vozlisce> (graf);
 				Stack<MemTemp> sklad = new Stack<>();
 				while (true) {
 					simplify(modifiedGraf, sklad);
 					if (!spill(modifiedGraf, sklad))
 						break;
 				}
-
 				Vozlisce defSpill = select(graf, modifiedGraf, sklad);
 				if (defSpill != null) {
 					code.tempSize += 8;
@@ -150,10 +147,8 @@ public class RegAll extends Phase {
 	private boolean spill (HashMap<MemTemp, Vozlisce> graf, Stack<MemTemp> sklad){
 
 		int index = (int) (Math.random() * (graf.keySet().size()));
-		@SuppressWarnings("unchecked")
 		Iterator it = graf.entrySet().iterator();
 		while (it.hasNext()) {
-			@SuppressWarnings("unchecked")
 			Map.Entry pair = (Map.Entry)it.next();
 			index--;
 			if (index > -1)
@@ -176,10 +171,8 @@ public class RegAll extends Phase {
 		boolean zanka = true;
 		while (zanka) {
 			zanka = false;
-			@SuppressWarnings("unchecked")
 			Iterator it = graf.entrySet().iterator();
 			while (it.hasNext()) {
-				@SuppressWarnings("unchecked")
 				Map.Entry pair = (Map.Entry)it.next();
 				Vozlisce v = (Vozlisce) pair.getValue();
 				MemTemp t = (MemTemp) pair.getKey();
