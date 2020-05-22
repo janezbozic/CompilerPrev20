@@ -17,7 +17,7 @@ import java.util.*;
 public class RegAll extends Phase {
 	
 	/** Mapping of temporary variables to registers. */
-	public final HashMap<MemTemp, Integer> tempToReg = new HashMap<MemTemp, Integer>();
+	public static final HashMap<MemTemp, Integer> tempToReg = new HashMap<MemTemp, Integer>();
 
 	public int R;
 	public MemTemp FP = null;
@@ -56,14 +56,14 @@ public class RegAll extends Phase {
 							AsmOPER ns = new AsmOPER(((AsmOPER) instr).instr(), v, instr.defs(), instr.jumps());
 							Vector<MemTemp> newDefs = new Vector<>();
 							newDefs.add(newTemp2);
-							AsmOPER newMove = new AsmOPER("SET `d0, -" + offset, null, newDefs, null);
+							AsmOPER newNeg = new AsmOPER("NEG `d0,0," + offset, null, newDefs, null);
 							Vector<MemTemp> newUses = new Vector<>();
 							Vector<MemTemp> newDefs1 = new Vector<>();
 							newDefs1.add(newTemp1);
 							newUses.add(newTemp2);
 							newUses.add(FP);
-							AsmOPER newOper = new AsmOPER("LDO `d0, `s0, `s1", newUses, newDefs1, null);
-							code.instrs.add(i++, newMove);
+							AsmOPER newOper = new AsmOPER("LDO `d0,`s0,`s1", newUses, newDefs1, null);
+							code.instrs.add(i++, newNeg);
 							code.instrs.add(i++, newOper);
 							code.instrs.set(i, ns);
 							instr = ns;
@@ -78,26 +78,30 @@ public class RegAll extends Phase {
 							code.instrs.set(i++, ns);
 							Vector<MemTemp> newDefs = new Vector<>();
 							newDefs.add(newTemp2);
-							AsmOPER newMove = new AsmOPER("SET `d0, -" + offset, null, newDefs, null);
+							AsmOPER newNeg = new AsmOPER("NEG `d0,0," + offset, null, newDefs, null);
+							code.instrs.add(i++, newNeg);
 							Vector<MemTemp> newUses = new Vector<>();
 							newUses.add(newTemp1);
 							newUses.add(FP);
 							newUses.add(newTemp2);
-							AsmOPER newOper = new AsmOPER("STO `s0, `s1, `s2", newUses, null, null);
-							code.instrs.add(i++, newMove);
+							AsmOPER newOper = new AsmOPER("STO `s0,`s1,`s2", newUses, null, null);
 							code.instrs.add(i, newOper);
 						}
 					}
+
 					LiveAn l = new LiveAn();
 					l.analysis();
+					System.out.println(defSpill==null ? "null" : (defSpill.temp + " FP: " + FP.temp));
 				}
 				else {
+					System.out.println(defSpill==null ? "null" : defSpill.temp + " FP: " + FP.temp);;
 					break;
 				}
 			}
 			for (MemTemp t: graf.keySet()){
 				tempToReg.put(t, graf.get(t).barva);
 			}
+			tempToReg.put(FP, 253);
 		}
 
 	}
@@ -110,18 +114,20 @@ public class RegAll extends Phase {
 			Vozlisce v = graf.get(t);
 			if (t == FP){
 				v.setBarva(253);
-				continue;
+				System.out.println("aaaaa");
 			}
-			for (MemTemp tSosed: v.modifiedSosedi){
-				Vozlisce sosed = graf.get(tSosed);
-				if (sosed.getBarva() > -1 && sosed.temp != FP){
-					barve[sosed.getBarva()] = true;
+			else {
+				for (MemTemp tSosed : v.modifiedSosedi) {
+					Vozlisce sosed = graf.get(tSosed);
+					if (sosed.getBarva() > -1 && sosed.temp != FP) {
+						barve[sosed.getBarva()] = true;
+					}
 				}
-			}
-			for (int i = 0; i<R; i++){
-				if (!barve[i]){
-					v.setBarva(i);
-					break;
+				for (int i = 0; i < R; i++) {
+					if (!barve[i]) {
+						v.setBarva(i);
+						break;
+					}
 				}
 			}
 			if (v.getBarva() > -1){
@@ -146,7 +152,7 @@ public class RegAll extends Phase {
 
 	private boolean spill (HashMap<MemTemp, Vozlisce> graf, Stack<MemTemp> sklad){
 
-		int index = (int) (Math.random() * (graf.keySet().size()));
+		int index = 0; //(int) (Math.random() * (graf.keySet().size()));
 		Iterator it = graf.entrySet().iterator();
 		while (it.hasNext()) {
 			Map.Entry pair = (Map.Entry)it.next();
@@ -194,31 +200,38 @@ public class RegAll extends Phase {
 
 		HashMap<MemTemp, Vozlisce> vozlisca = new HashMap<>();
 
-			for (int i = 0; i < instrs.size(); i++){
-				HashSet<MemTemp> out = instrs.get(i).out();
-				for (MemTemp outi: out){
+		for (int i = 0; i < instrs.size(); i++){
+			HashSet<MemTemp> out = instrs.get(i).out();
+			for (MemTemp outi: out){
+				if (outi != FP) {
 					Vozlisce v = vozlisca.get(outi);
-					if (v == null){
+					if (v == null) {
 						v = new Vozlisce(outi, out);
 						vozlisca.put(outi, v);
-					}
-					else {
+					} else {
 						v.addA(out);
 					}
 				}
-				Vector<MemTemp> def = instrs.get(i).defs();
-				for (MemTemp defi: def){
+			}
+			Vector<MemTemp> def = instrs.get(i).defs();
+			for (MemTemp defi: def){
+				if (defi != FP) {
 					Vozlisce v = vozlisca.get(defi);
-					if (v == null){
+					if (v == null) {
 						HashSet<MemTemp> h = new HashSet<>(def);
 						v = new Vozlisce(defi, h);
 						vozlisca.put(defi, v);
-					}
-					else {
+					} else {
 						v.addA(new HashSet<>(def));
 					}
 				}
 			}
+		}
+
+		for (MemTemp t: vozlisca.keySet()){
+			vozlisca.get(t).sosedi.remove(FP);
+			vozlisca.get(t).removeSosed(FP);
+		}
 
 		return vozlisca;
 	}

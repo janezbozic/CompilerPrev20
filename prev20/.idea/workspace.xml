@@ -3,12 +3,24 @@
   <component name="ChangeListManager">
     <list default="true" id="f8882136-713d-4797-9878-088ab3b80d2d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prg/mojTest.p20" beforeDir="false" afterPath="$PROJECT_DIR$/prg/mojTest.p20" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prev/Compiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prev/Compiler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prev/phase/asmgen/ExprGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prev/phase/asmgen/ExprGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prev/phase/asmgen/StmtGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prev/phase/asmgen/StmtGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prev/phase/memory/MemEvaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prev/phase/memory/MemEvaluator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/prev/phase/regall/RegAll.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prev/phase/regall/RegAll.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -27,6 +39,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/prev20" />
   </component>
   <component name="RunManager">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
@@ -54,7 +67,12 @@
       <workItem from="1589649834023" duration="9759000" />
       <workItem from="1589718481253" duration="21744000" />
       <workItem from="1589740677236" duration="93000" />
-      <workItem from="1589787406067" duration="5569000" />
+      <workItem from="1589787406067" duration="14832000" />
+      <workItem from="1589906403122" duration="1105000" />
+      <workItem from="1589907580389" duration="635000" />
+      <workItem from="1589953029716" duration="3620000" />
+      <workItem from="1590048908497" duration="29902000" />
+      <workItem from="1590131033201" duration="22201000" />
     </task>
     <task id="LOCAL-00001" summary="Narejena 11. naloga">
       <created>1589740750636</created>
@@ -70,7 +88,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589790553935</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Popravljeni warningi">
+      <created>1589793646531</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1589793646531</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -79,7 +104,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Narejena 11. naloga" />
     <MESSAGE value="Popravljene stare napake" />
-    <option name="LAST_COMMIT_MESSAGE" value="Popravljene stare napake" />
+    <MESSAGE value="Popravljeni warningi" />
+    <option name="LAST_COMMIT_MESSAGE" value="Popravljeni warningi" />
   </component>
   <component name="WindowStateProjectService">
     <state x="755" y="415" width="785" height="421" key="#Scopes" timestamp="1589459355348">
@@ -98,29 +124,41 @@
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
     <state x="768" y="240" width="374" height="626" key="#com.intellij.ide.util.MemberChooser/0.28.1920.1052@0.28.1920.1052" timestamp="1589638826384" />
-    <state x="492" y="67" width="925" height="972" key="CommitChangelistDialog2" timestamp="1589790553709">
+    <state x="492" y="67" width="925" height="972" key="CommitChangelistDialog2" timestamp="1589793646460">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state x="492" y="67" width="925" height="972" key="CommitChangelistDialog2/0.28.1920.1052@0.28.1920.1052" timestamp="1589790553709" />
+    <state x="492" y="67" width="925" height="972" key="CommitChangelistDialog2/0.28.1920.1052@0.28.1920.1052" timestamp="1589793646460" />
     <state x="100" y="128" width="1720" height="852" key="DiffContextDialog" timestamp="1589788173544">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
     <state x="100" y="128" width="1720" height="852" key="DiffContextDialog/0.28.1920.1052@0.28.1920.1052" timestamp="1589788173544" />
-    <state x="555" y="289" width="800" height="527" key="Vcs.Push.Dialog.v2" timestamp="1589790556698">
+    <state x="743" y="312" width="424" height="482" key="FileChooserDialogImpl" timestamp="1590145217736">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state x="555" y="289" width="800" height="527" key="Vcs.Push.Dialog.v2/0.28.1920.1052@0.28.1920.1052" timestamp="1589790556698" />
-    <state x="100" y="128" width="1720" height="852" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1589729552167">
+    <state x="743" y="312" width="424" height="482" key="FileChooserDialogImpl/0.28.1920.1052@0.28.1920.1052" timestamp="1590145217736" />
+    <state x="706" y="204" width="497" height="698" key="RollbackChangesDialog" timestamp="1590083855867">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state x="100" y="128" width="1720" height="852" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.28.1920.1052@0.28.1920.1052" timestamp="1589729552167" />
-    <state x="651" y="264" width="618" height="580" key="find.popup" timestamp="1589740060559">
+    <state x="706" y="204" width="497" height="698" key="RollbackChangesDialog/0.28.1920.1052@0.28.1920.1052" timestamp="1590083855867" />
+    <state x="555" y="289" width="800" height="527" key="Vcs.Push.Dialog.v2" timestamp="1589793649994">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state x="651" y="264" width="618" height="580" key="find.popup/0.28.1920.1052@0.28.1920.1052" timestamp="1589740060559" />
-    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup" timestamp="1589787939759">
+    <state x="555" y="289" width="800" height="527" key="Vcs.Push.Dialog.v2/0.28.1920.1052@0.28.1920.1052" timestamp="1589793649994" />
+    <state x="100" y="128" width="1720" height="852" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1590141870095">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup/0.28.1920.1052@0.28.1920.1052" timestamp="1589787939759" />
+    <state x="100" y="128" width="1720" height="852" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.28.1920.1052@0.28.1920.1052" timestamp="1590141870095" />
+    <state x="651" y="264" width="618" height="580" key="find.popup" timestamp="1590141723114">
+      <screen x="0" y="28" width="1920" height="1052" />
+    </state>
+    <state x="651" y="264" width="618" height="580" key="find.popup/0.28.1920.1052@0.28.1920.1052" timestamp="1590141723114" />
+    <state x="624" y="254" key="run.anything.popup" timestamp="1590084279875">
+      <screen x="0" y="28" width="1920" height="1052" />
+    </state>
+    <state x="624" y="254" key="run.anything.popup/0.28.1920.1052@0.28.1920.1052" timestamp="1590084279875" />
+    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup" timestamp="1590146836434">
+      <screen x="0" y="28" width="1920" height="1052" />
+    </state>
+    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup/0.28.1920.1052@0.28.1920.1052" timestamp="1590146836434" />
   </component>
 </project>

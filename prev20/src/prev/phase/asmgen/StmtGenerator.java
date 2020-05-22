@@ -79,13 +79,13 @@ public class StmtGenerator implements ImcVisitor<Vector<AsmInstr>, Object> {
             ImcMEM memExpr = (ImcMEM) move.dst;
             uses.add(move.src.accept(new ExprGenerator(new MemTemp()), vector));
             uses.add(memExpr.addr.accept(new ExprGenerator(new MemTemp()), vector));
-            vector.add(new AsmOPER("STO `s0, `s1,0", uses, null, null));
+            vector.add(new AsmOPER("STO `s0,`s1,0", uses, null, null));
         }
         else {
             if (move.src instanceof ImcTEMP && move.dst instanceof ImcTEMP){
                 defs.add(move.dst.accept(new ExprGenerator(new MemTemp()), vector));
                 uses.add(move.src.accept(new ExprGenerator(new MemTemp()), vector));
-                vector.add(new AsmMOVE("SET `d0, `s0", uses, defs));
+                vector.add(new AsmMOVE("SET `d0,`s0", uses, defs));
             }
             else {
                 MemTemp temp = move.dst.accept(new ExprGenerator(new MemTemp()), vector);

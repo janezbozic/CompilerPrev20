@@ -59,33 +59,28 @@ public class ExprGenerator implements ImcVisitor<MemTemp, Vector<AsmInstr>> {
                 Vector<MemTemp> cmps = new Vector<>();
                 cmps.add(new MemTemp());
                 visArg.add(new AsmOPER("CMP `d0,`s0,`s1", uses, cmps, null));
-                switch (binOp.oper){
+                switch (binOp.oper) {
                     case EQU:
-                        visArg.add(new AsmOPER("CSZ `d0,`s0,1", cmps, defs, null));
-                        visArg.add(new AsmOPER("CSNZ `d0,`s0,0", cmps, defs, null));
+                        visArg.add(new AsmOPER("ZSZ `d0,`s0,1", cmps, defs, null));
                         break;
                     case NEQ:
-                        visArg.add(new AsmOPER("CSZ `d0,`s0,0", cmps, defs, null));
-                        visArg.add(new AsmOPER("CSNZ `d0,`s0,1", cmps, defs, null));
+                        visArg.add(new AsmOPER("ZSNZ `d0,`s0,1", cmps, defs, null));
                         break;
-
                     case LTH:
-                        visArg.add(new AsmOPER("CSN `d0,`s0,1", cmps, defs, null));
-                        visArg.add(new AsmOPER("CSNN `d0,`s0,0", cmps, defs, null));
+                        visArg.add(new AsmOPER("ZSN `d0,`s0,1", cmps, defs, null));
                         break;
                     case GEQ:
-                        visArg.add(new AsmOPER("CSN `d0,`s0,0", cmps, defs, null));
-                        visArg.add(new AsmOPER("CSNN `d0,`s0,1", cmps, defs, null));
+                        visArg.add(new AsmOPER("ZSNN `d0,`s0,1", cmps, defs, null));
                         break;
-
                     case GTH:
-                        visArg.add(new AsmOPER("CSP `d0,`s0,1", cmps, defs, null));
-                        visArg.add(new AsmOPER("CSNP `d0,`s0,0", cmps, defs, null));
+                        visArg.add(new AsmOPER("ZSP `d0,`s0,1", cmps, defs, null));
                         break;
                     case LEQ:
-                        visArg.add(new AsmOPER("CSP `d0,`s0,0", cmps, defs, null));
-                        visArg.add(new AsmOPER("CSNP `d0,`s0,1", cmps, defs, null));
+                        visArg.add(new AsmOPER("ZSNP `d0,`s0,1", cmps, defs, null));
                         break;
+
+                    default:
+                        System.out.println("[ExprGen]" + binOp.oper + " does not exist");
                 }
                 return temp;
         }
@@ -104,7 +99,8 @@ public class ExprGenerator implements ImcVisitor<MemTemp, Vector<AsmInstr>> {
 
         int offset = call.args().size() * 8;
 
-        for (ImcExpr expr: call.args()){
+        for (int i = call.args().size()-1; i >= 0; i--){
+            ImcExpr expr = call.args().get(i);
             offset -= 8;
             MemTemp temp = expr.accept(this, visArg);
             Vector<MemTemp> uses = new Vector<>();

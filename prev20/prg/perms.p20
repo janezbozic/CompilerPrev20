@@ -1,0 +1,79 @@
+fun exit():void = none
+fun putChar(c:char):void = none
+fun getChar():char = (0:char)
+
+fun putInteger(i:integer):void =
+    {
+      if (i<0) then { putChar('-'); i=-i; } else none;
+      if (i==0) then putChar('0') else put(i);
+    }
+    where
+    {
+      fun put(i:integer):void =
+          {
+            if (i==0) then none else {
+              put(i/10);
+              putChar(((i%10+('0':integer)):char));
+            };
+          }
+    }
+
+fun putString(s:^char):void =
+    {
+      i=0;
+      while (((s:integer)+(i*8):^char)^!=(0:char)) do {
+        putChar(((s:integer)+(i*8):^char)^);
+        i=i+1;
+      };
+      none;
+    }
+    where
+    {
+      var i:integer
+    }
+
+#---------------------------------------------------------------
+
+fun perms(i:integer,n:integer,ns:^([32]integer)):void =
+    {
+      putChar('a');
+      if i==n then
+        {
+          j=0;
+          while j<n do {
+            putInteger(ns^[j]);
+            putChar(' ');
+            j=j+1;
+          };
+          putChar((10:char));
+        } where { var j:integer }
+      else
+        {
+          j=i;
+          while j<n do {
+            { tmp=ns^[i];ns^[i]=ns^[j];ns^[j]=tmp; } where { var tmp:integer };
+            perms(i+1,n,ns);
+            { tmp=ns^[i];ns^[i]=ns^[j];ns^[j]=tmp; } where { var tmp:integer };
+            j=j+1;
+          };
+        } where { var j:integer };
+    }
+
+fun main():integer =
+    {
+      n=3;
+      {
+        i=0;
+        while i<n do {
+          ns[i]=i;
+          i=i+1;
+        };
+      } where { var i:integer };
+      perms(0,n,^ns);
+      0;
+    }
+    where
+    {
+      var n:integer
+      var ns:[32]integer
+    }

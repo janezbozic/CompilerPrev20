@@ -1,5 +1,15 @@
-fun main():void = {
-    b = 1+ 2 + 3 + 4 + 5;
+fun exit():void = none
+fun putChar(c:char):void = none
+fun getChar():char = (0:char)
+
+fun main(): void = {
+  c = getChar();
+
+  if (c=='+') then {
+    putChar('k');
+  } else {
+    if (c=='-') then putChar('z') else putChar('/');
+  };
 } where {
-    var b : integer 
+  var c:char
 }

@@ -116,7 +116,7 @@ public class MemEvaluator extends AstFullVisitor<Object, MemEvaluator.Context> {
 	@Override
 	public Object visit(AstAtomExpr atomExpr, MemEvaluator.Context c) {
 		if (atomExpr.type() == AstAtomExpr.Type.STRING) {
-			Memory.strings.put(atomExpr, new MemAbsAccess(new SemChar().size() * atomExpr.value().length() - 1, new MemLabel(), atomExpr.value()));
+			Memory.strings.put(atomExpr, new MemAbsAccess(new SemChar().size() * atomExpr.value().length(), new MemLabel(), atomExpr.value()));
 		}
 		return null;
 	}

@@ -1,11 +1,20 @@
 package prev;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 import org.antlr.v4.runtime.*;
 
 import prev.common.report.*;
+import prev.data.asm.AsmInstr;
+import prev.data.asm.AsmLABEL;
+import prev.data.asm.Code;
 import prev.data.ast.tree.*;
+import prev.data.ast.tree.decl.AstFunDecl;
+import prev.data.imc.code.stmt.ImcLABEL;
+import prev.data.lin.LinDataChunk;
 import prev.phase.lexan.*;
 import prev.phase.synan.*;
 import prev.phase.abstr.*;
@@ -231,13 +240,184 @@ public class Compiler {
 				if (Compiler.cmdLineArgValue("--target-phase").equals("regall"))
 					break;
 
+				wrapup();
+
 				break;
 			}
 
 			Report.info("Done.");
 		} catch (Report.Error __) {
 			System.exit(1);
+		} catch (FileNotFoundException | UnsupportedEncodingException e) {
+			e.printStackTrace();
 		}
+	}
+
+	private static void wrapup() throws FileNotFoundException, UnsupportedEncodingException {
+
+		PrintWriter printWriter = new PrintWriter("test.mms");
+
+		printWriter.println("\tLOC	#100");
+		printWriter.println("\tGREG	@"); //254 SP
+		printWriter.println("D254\tOCTA 0");
+		printWriter.println("\tGREG	@"); //253 FP
+		printWriter.println("D253\tOCTA 0");
+		printWriter.println("\tGREG	@"); //252 HP
+		printWriter.println("D252\tOCTA 0");
+
+
+		printWriter.println("\tGREG	@");
+		printWriter.println("PRINT	BYTE	0,0");
+
+		printWriter.println("inCount	IS	#1");
+		printWriter.println("InArgs	OCTA	charRead,inCount");
+		printWriter.println("charRead	BYTE	0");
+
+		printWriter.println();
+
+		int size = 0;
+		boolean first = true;
+
+		for (LinDataChunk d: ImcLin.dataChunks()) {
+			if (size > 255 || first){
+				printWriter.println("\tGREG	@");
+				size = 0;
+				first = false;
+			}
+			if (d != null){
+				String decl = d.label.name + "\t" + "OCTA\t" + d.init + ",0";
+				printWriter.println(decl);
+				size += d.size;
+			}
+			else{
+				String s = d.label.name + "\t" + "OCTA\t";
+				for(int i = 0; i < d.size / 8; i++) {
+					s += i == 0 ? "0" : ",0";
+				}
+				size += d.size;
+				printWriter.println(s);
+			}
+		}
+
+		printWriter.println();
+
+		printWriter.println("Main\tSET $0,#0");
+
+		printWriter.println("\tSETH $252,#3000");
+
+		printWriter.println("\tSETH $254,#3FFF");
+		printWriter.println("\tINCMH $254,#FFFF");
+		printWriter.println("\tINCML $254,#FFFF");
+		printWriter.println("\tINCL $254,#FFFF");
+
+		printWriter.println("\tPUSHJ $0,_main");
+
+		printWriter.println("\tTRAP 0,Halt,0");
+
+		printWriter.println();
+
+		for (Code code: AsmGen.codes){
+
+			if (code.frame.label.name.equals("_putChar") || code.frame.label.name.equals("_exit") || code.frame.label.name.equals("_getChar")){
+				continue;
+			}
+
+			//	oldFP
+			printWriter.println(code.frame.label.name + "\tSET $0,$254");
+			printWriter.println("\tSETL $1,"+ (code.frame.locsSize + 8));
+			printWriter.println("\tSUB $0,$0,$1" );
+			printWriter.println("\tSTO $253,$0,0");
+
+			// Save the return address
+			printWriter.println("\tSUB $0,$0," + 8);
+			printWriter.println("\tGET $2,rJ");
+			printWriter.println("\tSTO $2,$0,0");
+
+			// Increase FP and SP
+			printWriter.println("\tSET $253,$254");
+			printWriter.println("\tSETL $1,"+ code.frame.size);
+			printWriter.println("\tSUB $254,$254,$1");
+
+			// Jump to body
+			printWriter.println("\tJMP " + code.entryLabel.name);
+
+			for (int i = 0; i<code.instrs.size(); i++){
+				AsmInstr instr = code.instrs.get(i);
+				if(instr instanceof AsmLABEL) {
+					AsmLABEL label = (AsmLABEL) instr;
+					instr = code.instrs.get(i+1);
+					printWriter.println(label.label.name + "\t" + instr.toString(RegAll.tempToReg));
+					i++;
+				}else {
+					printWriter.println("\t" + instr.toString(RegAll.tempToReg));
+				}
+			}
+
+			printWriter.println(code.exitLabel.name + "\tSTO $0,$253,0");
+			printWriter.println("\tSET $0,$253");
+			printWriter.println("\tSETL $1,"+ (code.frame.locsSize + 8));
+			printWriter.println("\tSUB $0,$0,$1");
+			printWriter.println("\tLDO $2,$0,0");
+
+			printWriter.println("\tSET $254,$253");
+			printWriter.println("\tSET $253,$2");
+
+			printWriter.println("\tSUB $0,$0," + 8);
+			printWriter.println("\tLDO $2,$0,0");
+			printWriter.println("\tPUT rJ,$2");
+
+			printWriter.println("\tPOP");
+
+			printWriter.println();
+		}
+
+		printWriter.println("_putChar	SET $0,$254");
+		printWriter.println("\tADD $0,$0,8");
+		printWriter.println("\tLDO $0,$0,0");
+		printWriter.println("\tLDA $255,PRINT");
+		printWriter.println("\tSTB $0,$255,0");
+		printWriter.println("\tTRAP 0,Fputs,StdOut");
+		printWriter.println("\tPOP");
+
+		printWriter.println();
+
+		printWriter.println("_getChar	SET $0,$254");
+		printWriter.println("\tSET $1,8");
+		printWriter.println("\tSUB $0,$0,$1");
+		printWriter.println("\tSTO $253,$0,0");
+		printWriter.println("\tSUB $0,$0,8");
+		printWriter.println("\tGET $1,rJ");
+		printWriter.println("\tSTO $1,$0,0");
+		printWriter.println("\tSET $253,$254");
+		printWriter.println("\tSET $0,16");
+		printWriter.println("\tSUB $254,$254,$0");
+		printWriter.println("\tLDA	$255,InArgs");
+		printWriter.println("\tTRAP 0,Fread,StdIn");
+		printWriter.println("\tLDA	$255,charRead");
+		printWriter.println("\tLDB	$0,$255,0");
+		printWriter.println("\tSTO $0,$253,0");
+		printWriter.println("\tSET $0,$253");
+		printWriter.println("\tSET $1,8");
+		printWriter.println("\tSUB $0,$0,$1");
+		printWriter.println("\tLDO $1,$0,0");
+		printWriter.println("\tSET $254,$253");
+		printWriter.println("\tSET $253,$1");
+		printWriter.println("\tSUB $0,$0,8");
+		printWriter.println("\tLDO $1,$0,0");
+		printWriter.println("\tPUT rJ,$1");
+		printWriter.println("\tPOP");
+
+		printWriter.println();
+
+		printWriter.println("");
+
+		printWriter.println();
+
+		printWriter.println("_exit	TRAP 0,Halt,0");
+
+		printWriter.flush();
+		printWriter.close();
+
 	}
 
 }
