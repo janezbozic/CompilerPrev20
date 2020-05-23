@@ -36,7 +36,6 @@ fun putString(s:^char):void =
 
 fun perms(i:integer,n:integer,ns:^([32]integer)):void =
     {
-      putChar('a');
       if i==n then
         {
           j=0;
@@ -61,7 +60,7 @@ fun perms(i:integer,n:integer,ns:^([32]integer)):void =
 
 fun main():integer =
     {
-      n=3;
+      n=8;
       {
         i=0;
         while i<n do {

@@ -1,21 +1,5 @@
 fun putChar(c:char):void = none
 
-fun putInteger(i:integer):void =
-    {
-      if (i<0) then { putChar('-'); i=-i; } else none;
-      if (i==0) then putChar('0') else put(i);
-    }
-    where
-    {
-      fun put(i:integer):void =
-          {
-            if (i==0) then none else {
-              put(i/10);
-              putChar(((i%10+('0':integer)):char));
-            };
-          }
-    }
-
 fun putString(s:^char):void =
     {
       i=0;
@@ -45,7 +29,7 @@ fun perms(i:integer,n:integer, ns: integer):void =
       if i==n then {
           none;
       } else {
-        perms(i+1,n, ns);
+        perms(n,n, ns);
         #putInteger(i);
       } where { var j:integer };
     } 

@@ -335,7 +335,7 @@ public class Compiler {
 
 			// Increase FP and SP
 			printWriter.println("\tSET $253,$254");
-			printWriter.println("\tSETL $1,"+ code.frame.size);
+			printWriter.println("\tSETL $1,"+ (code.frame.size + code.tempSize));
 			printWriter.println("\tSUB $254,$254,$1");
 
 			// Jump to body

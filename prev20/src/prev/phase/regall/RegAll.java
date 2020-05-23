@@ -152,7 +152,7 @@ public class RegAll extends Phase {
 
 	private boolean spill (HashMap<MemTemp, Vozlisce> graf, Stack<MemTemp> sklad){
 
-		int index = 0; //(int) (Math.random() * (graf.keySet().size()));
+		int index = (int) (Math.random() * (graf.keySet().size()));
 		Iterator it = graf.entrySet().iterator();
 		while (it.hasNext()) {
 			Map.Entry pair = (Map.Entry)it.next();
