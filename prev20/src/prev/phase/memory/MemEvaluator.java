@@ -120,9 +120,9 @@ public class MemEvaluator extends AstFullVisitor<Object, MemEvaluator.Context> {
 		switch (pfxExpr.oper()) {
 			case DEL:
 			case NEW:
-				FunContext _ctx = (FunContext) ctx;
-				if (_ctx.argsSize < 8)
-					_ctx.argsSize = 8;
+				FunContext fctx = (FunContext) ctx;
+				if (fctx.argsSize < 8)
+					fctx.argsSize = 8;
 				break;
 			case ADD:
 			case SUB:

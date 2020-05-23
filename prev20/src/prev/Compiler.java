@@ -240,7 +240,7 @@ public class Compiler {
 				if (Compiler.cmdLineArgValue("--target-phase").equals("regall"))
 					break;
 
-				wrapup();
+				putItTogether();
 
 				break;
 			}
@@ -253,9 +253,9 @@ public class Compiler {
 		}
 	}
 
-	private static void wrapup() throws FileNotFoundException, UnsupportedEncodingException {
+	private static void putItTogether() throws FileNotFoundException, UnsupportedEncodingException {
 
-		PrintWriter printWriter = new PrintWriter(cmdLineArgValue("--dst-file-name").substring(16));
+		PrintWriter printWriter = new PrintWriter(cmdLineArgValue("--dst-file-name"));
 
 		printWriter.println("\tLOC	#100");
 		printWriter.println("\tGREG	@"); //254 SP
@@ -279,7 +279,7 @@ public class Compiler {
 		boolean first = true;
 
 		for (LinDataChunk d: ImcLin.dataChunks()) {
-			if (size > 255 || first){
+			if (size > 255 || first){  // Malo hack, vendar ok. Bolje bi bilo izracunati ze zavzeto velikost
 				printWriter.println("\tGREG	@");
 				size = 0;
 				first = false;
@@ -322,21 +322,21 @@ public class Compiler {
 				continue;
 			}
 
-			//	oldFP
+			//	old FP
 			printWriter.println(code.frame.label.name + "\tSET $0,$254");
 			printWriter.println("\tSETL $1,"+ (code.frame.locsSize + 8));
 			printWriter.println("\tSUB $0,$0,$1" );
 			printWriter.println("\tSTO $253,$0,0");
 
-			// Save the return address
-			printWriter.println("\tSUB $0,$0," + 8);
-			printWriter.println("\tGET $2,rJ");
-			printWriter.println("\tSTO $2,$0,0");
-
 			// Increase FP and SP
 			printWriter.println("\tSET $253,$254");
 			printWriter.println("\tSETL $1,"+ (code.frame.size + code.tempSize));
 			printWriter.println("\tSUB $254,$254,$1");
+
+			// Save the return address
+			printWriter.println("\tSUB $0,$0," + 8);
+			printWriter.println("\tGET $1,rJ");
+			printWriter.println("\tSTO $1,$0,0");
 
 			// Jump to body
 			printWriter.println("\tJMP " + code.entryLabel.name);
@@ -357,14 +357,14 @@ public class Compiler {
 			printWriter.println("\tSET $0,$253");
 			printWriter.println("\tSETL $1,"+ (code.frame.locsSize + 8));
 			printWriter.println("\tSUB $0,$0,$1");
-			printWriter.println("\tLDO $2,$0,0");
+			printWriter.println("\tLDO $1,$0,0");
 
 			printWriter.println("\tSET $254,$253");
-			printWriter.println("\tSET $253,$2");
+			printWriter.println("\tSET $253,$1");
 
 			printWriter.println("\tSUB $0,$0," + 8);
-			printWriter.println("\tLDO $2,$0,0");
-			printWriter.println("\tPUT rJ,$2");
+			printWriter.println("\tLDO $1,$0,0");
+			printWriter.println("\tPUT rJ,$1");
 
 			printWriter.println("\tPOP");
 
@@ -391,10 +391,10 @@ public class Compiler {
 		printWriter.println("\tSET $253,$254");
 		printWriter.println("\tSET $0,16");
 		printWriter.println("\tSUB $254,$254,$0");
-		printWriter.println("\tLDA	$255,InArgs");
+		printWriter.println("\tLDA $255,InArgs");
 		printWriter.println("\tTRAP 0,Fread,StdIn");
-		printWriter.println("\tLDA	$255,charRead");
-		printWriter.println("\tLDB	$0,$255,0");
+		printWriter.println("\tLDA $255,charRead");
+		printWriter.println("\tLDB $0,$255,0");
 		printWriter.println("\tSTO $0,$253,0");
 		printWriter.println("\tSET $0,$253");
 		printWriter.println("\tSET $1,8");
@@ -409,9 +409,9 @@ public class Compiler {
 
 		printWriter.println();
 
-		printWriter.println("_new    LDO    $0,$254,0");
-		printWriter.println("\tSTO    $252,$254,0");
-		printWriter.println("\tADD    $252,$252,$0");
+		printWriter.println("_new    LDO $0,$254,0");
+		printWriter.println("\tSTO $252,$254,0");
+		printWriter.println("\tADD $252,$252,$0");
 		printWriter.println("\tPOP");
 
 		printWriter.println();
