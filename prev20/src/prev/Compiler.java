@@ -121,7 +121,7 @@ public class Compiler {
 				throw new Report.Error("Source file not specified.");
 			}
 			if (cmdLine.get("--dst-file-name") == null) {
-				cmdLine.put("--dst-file-name", cmdLine.get("--src-file-name").replaceFirst("\\.[^./]*$", "") + ".mmix");
+				cmdLine.put("--dst-file-name", cmdLine.get("--src-file-name").replaceFirst("\\.[^./]*$", "") + ".mms");
 			}
 			if (cmdLine.get("--target-phase") == null) {
 				cmdLine.put("--target-phase", phases.replaceFirst("^.*\\|", ""));
@@ -255,15 +255,15 @@ public class Compiler {
 
 	private static void wrapup() throws FileNotFoundException, UnsupportedEncodingException {
 
-		PrintWriter printWriter = new PrintWriter("test.mms");
+		PrintWriter printWriter = new PrintWriter(cmdLineArgValue("--dst-file-name").substring(16));
 
 		printWriter.println("\tLOC	#100");
 		printWriter.println("\tGREG	@"); //254 SP
-		printWriter.println("D254\tOCTA 0");
+		printWriter.println("R254\tOCTA 0");
 		printWriter.println("\tGREG	@"); //253 FP
-		printWriter.println("D253\tOCTA 0");
+		printWriter.println("R253\tOCTA 0");
 		printWriter.println("\tGREG	@"); //252 HP
-		printWriter.println("D252\tOCTA 0");
+		printWriter.println("R252\tOCTA 0");
 
 
 		printWriter.println("\tGREG	@");
@@ -409,7 +409,14 @@ public class Compiler {
 
 		printWriter.println();
 
-		printWriter.println("");
+		printWriter.println("_new    LDO    $0,$254,0");
+		printWriter.println("\tSTO    $252,$254,0");
+		printWriter.println("\tADD    $252,$252,$0");
+		printWriter.println("\tPOP");
+
+		printWriter.println();
+
+		printWriter.println("_del    POP");
 
 		printWriter.println();
 

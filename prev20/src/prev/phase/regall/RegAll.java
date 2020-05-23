@@ -43,6 +43,7 @@ public class RegAll extends Phase {
 				}
 				Vozlisce defSpill = select(graf, modifiedGraf, sklad);
 				if (defSpill != null) {
+					System.out.println("Spill: " + defSpill.temp);
 					code.tempSize += 8;
 					long offset = code.tempSize + code.frame.locsSize + 16;
 					for (int i = 0; i<code.instrs.size(); i++){
@@ -56,14 +57,27 @@ public class RegAll extends Phase {
 							AsmOPER ns = new AsmOPER(((AsmOPER) instr).instr(), v, instr.defs(), instr.jumps());
 							Vector<MemTemp> newDefs = new Vector<>();
 							newDefs.add(newTemp2);
-							AsmOPER newNeg = new AsmOPER("NEG `d0,0," + offset, null, newDefs, null);
+							if (offset > 255) {
+								long offi = offset - 255;
+								AsmOPER setInstr = new AsmOPER("NEG `d0,0,255", null, newDefs, null);
+								code.instrs.add(i++, setInstr);
+								while (offi > 255) {
+									AsmOPER subInstr = new AsmOPER("SUB `d0,`s0,255", newDefs, newDefs, null);
+									code.instrs.add(i++, subInstr);
+									offi -= 255;
+								}
+								AsmOPER subInstr = new AsmOPER("SUB `d0,`s0," + offi, newDefs, newDefs, null);
+								code.instrs.add(i++, subInstr);
+							} else {
+								AsmOPER setInstr = new AsmOPER("NEG `d0,0," + offset, null, newDefs, null);
+								code.instrs.add(i++, setInstr);
+							}
 							Vector<MemTemp> newUses = new Vector<>();
 							Vector<MemTemp> newDefs1 = new Vector<>();
 							newDefs1.add(newTemp1);
 							newUses.add(newTemp2);
 							newUses.add(FP);
 							AsmOPER newOper = new AsmOPER("LDO `d0,`s0,`s1", newUses, newDefs1, null);
-							code.instrs.add(i++, newNeg);
 							code.instrs.add(i++, newOper);
 							code.instrs.set(i, ns);
 							instr = ns;
@@ -78,8 +92,21 @@ public class RegAll extends Phase {
 							code.instrs.set(i++, ns);
 							Vector<MemTemp> newDefs = new Vector<>();
 							newDefs.add(newTemp2);
-							AsmOPER newNeg = new AsmOPER("NEG `d0,0," + offset, null, newDefs, null);
-							code.instrs.add(i++, newNeg);
+							if (offset > 255) {
+								long offi = offset - 255;
+								AsmOPER setInstr = new AsmOPER("NEG `d0,0,255", null, newDefs, null);
+								code.instrs.add(i++, setInstr);
+								while (offi > 255) {
+									AsmOPER subInstr = new AsmOPER("SUB `d0,`s0,255", newDefs, newDefs, null);
+									code.instrs.add(i++, subInstr);
+									offi -= 255;
+								}
+								AsmOPER subInstr = new AsmOPER("SUB `d0,`s0," + offi, newDefs, newDefs, null);
+								code.instrs.add(i++, subInstr);
+							} else {
+								AsmOPER setInstr = new AsmOPER("NEG `d0,0," + offset, null, newDefs, null);
+								code.instrs.add(i++, setInstr);
+							}
 							Vector<MemTemp> newUses = new Vector<>();
 							newUses.add(newTemp1);
 							newUses.add(FP);
@@ -91,10 +118,8 @@ public class RegAll extends Phase {
 
 					LiveAn l = new LiveAn();
 					l.analysis();
-					System.out.println(defSpill==null ? "null" : (defSpill.temp + " FP: " + FP.temp));
 				}
 				else {
-					System.out.println(defSpill==null ? "null" : defSpill.temp + " FP: " + FP.temp);;
 					break;
 				}
 			}

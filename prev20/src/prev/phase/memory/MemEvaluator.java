@@ -5,8 +5,10 @@ import prev.data.ast.tree.decl.*;
 import prev.data.ast.tree.expr.*;
 import prev.data.ast.tree.type.*;
 import prev.data.ast.visitor.*;
+import prev.data.imc.code.expr.ImcExpr;
 import prev.data.semtype.*;
 import prev.data.mem.*;
+import prev.phase.imcgen.ImcGen;
 import prev.phase.seman.*;
 
 import static prev.phase.seman.SemAn.*;
@@ -110,6 +112,25 @@ public class MemEvaluator extends AstFullVisitor<Object, MemEvaluator.Context> {
 		else {
 			Memory.accesses.put(varDecl, new MemAbsAccess(t.size(), new MemLabel(varDecl.name())));
 		}
+		return null;
+	}
+
+	@Override
+	public Object visit(AstPfxExpr pfxExpr, Context ctx) {
+		switch (pfxExpr.oper()) {
+			case DEL:
+			case NEW:
+				FunContext _ctx = (FunContext) ctx;
+				if (_ctx.argsSize < 8)
+					_ctx.argsSize = 8;
+				break;
+			case ADD:
+			case SUB:
+			case NOT:
+			case PTR:
+				break;
+		}
+
 		return null;
 	}
 
