@@ -58,19 +58,19 @@ public class RegAll extends Phase {
 							Vector<MemTemp> newDefs = new Vector<>();
 							newDefs.add(newTemp2);
 							if (offset > 255) {
-								long offi = offset - 255;
 								AsmOPER setInstr = new AsmOPER("NEG `d0,0,255", null, newDefs, null);
+								long offi = offset - 255;
 								code.instrs.add(i++, setInstr);
 								while (offi > 255) {
-									AsmOPER subInstr = new AsmOPER("SUB `d0,`s0,255", newDefs, newDefs, null);
-									code.instrs.add(i++, subInstr);
+									AsmOPER newSub1 = new AsmOPER("SUB `d0,`s0,255", newDefs, newDefs, null);
+									code.instrs.add(i++, newSub1);
 									offi -= 255;
 								}
-								AsmOPER subInstr = new AsmOPER("SUB `d0,`s0," + offi, newDefs, newDefs, null);
-								code.instrs.add(i++, subInstr);
+								AsmOPER newSub2 = new AsmOPER("SUB `d0,`s0," + offi, newDefs, newDefs, null);
+								code.instrs.add(i++, newSub2);
 							} else {
-								AsmOPER setInstr = new AsmOPER("NEG `d0,0," + offset, null, newDefs, null);
-								code.instrs.add(i++, setInstr);
+								AsmOPER newSub = new AsmOPER("NEG `d0,0," + offset, null, newDefs, null);
+								code.instrs.add(i++, newSub);
 							}
 							Vector<MemTemp> newUses = new Vector<>();
 							Vector<MemTemp> newDefs1 = new Vector<>();
@@ -93,19 +93,19 @@ public class RegAll extends Phase {
 							Vector<MemTemp> newDefs = new Vector<>();
 							newDefs.add(newTemp2);
 							if (offset > 255) {
-								long offi = offset - 255;
 								AsmOPER setInstr = new AsmOPER("NEG `d0,0,255", null, newDefs, null);
+								long offi = offset - 255;
 								code.instrs.add(i++, setInstr);
 								while (offi > 255) {
-									AsmOPER subInstr = new AsmOPER("SUB `d0,`s0,255", newDefs, newDefs, null);
-									code.instrs.add(i++, subInstr);
+									AsmOPER newSub1 = new AsmOPER("SUB `d0,`s0,255", newDefs, newDefs, null);
+									code.instrs.add(i++, newSub1);
 									offi -= 255;
 								}
-								AsmOPER subInstr = new AsmOPER("SUB `d0,`s0," + offi, newDefs, newDefs, null);
-								code.instrs.add(i++, subInstr);
+								AsmOPER newSub2 = new AsmOPER("SUB `d0,`s0," + offi, newDefs, newDefs, null);
+								code.instrs.add(i++, newSub2);
 							} else {
-								AsmOPER setInstr = new AsmOPER("NEG `d0,0," + offset, null, newDefs, null);
-								code.instrs.add(i++, setInstr);
+								AsmOPER newSub = new AsmOPER("NEG `d0,0," + offset, null, newDefs, null);
+								code.instrs.add(i++, newSub);
 							}
 							Vector<MemTemp> newUses = new Vector<>();
 							newUses.add(newTemp1);

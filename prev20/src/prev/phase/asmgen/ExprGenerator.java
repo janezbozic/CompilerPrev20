@@ -3,6 +3,7 @@ package prev.phase.asmgen;
 import java.util.*;
 
 import prev.Compiler;
+import prev.common.report.Report;
 import prev.data.mem.*;
 import prev.data.imc.code.expr.*;
 import prev.data.imc.visitor.*;
@@ -80,7 +81,7 @@ public class ExprGenerator implements ImcVisitor<MemTemp, Vector<AsmInstr>> {
                         break;
 
                     default:
-                        System.out.println("[ExprGen]" + binOp.oper + " does not exist");
+                        throw new Report.Error("Operator not recognized" + binOp);
                 }
                 return temp;
         }

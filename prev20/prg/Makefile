@@ -1,7 +1,7 @@
 JAVA            = java
 XSLTPROC	= xsltproc
 RM              = 'rm' -fr
-
+N = 10
 PHASE		= none
 
 .PHONY	: %

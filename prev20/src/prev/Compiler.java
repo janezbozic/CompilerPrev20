@@ -269,25 +269,23 @@ public class Compiler {
 		printWriter.println("\tGREG	@");
 		printWriter.println("PRINT	BYTE	0,0");
 
-		printWriter.println("inCount	IS	#1");
-		printWriter.println("InArgs	OCTA	charRead,inCount");
-		printWriter.println("charRead	BYTE	0");
+		printWriter.println("inC	IS	#1");
+		printWriter.println("inA	OCTA	charR,inC");
+		printWriter.println("charR	BYTE	0");
 
 		printWriter.println();
 
-		int size = 0;
-		boolean first = true;
+		int size = 256;
 
 		for (LinDataChunk d: ImcLin.dataChunks()) {
-			if (size > 255 || first){  // Malo hack, vendar ok. Bolje bi bilo izracunati ze zavzeto velikost
+			if (size > 255){  // Malo hack, vendar ok. Bolje bi bilo izracunati ze zavzeto velikost ali dati v data segment
 				printWriter.println("\tGREG	@");
 				size = 0;
-				first = false;
 			}
-			if (d != null){
-				String decl = d.label.name + "\t" + "OCTA\t" + d.init + ",0";
-				printWriter.println(decl);
-				size += d.size;
+			if (d.init != null && d.init.startsWith("\"")){
+				String s = d.label.name + "\t" + "OCTA\t" + d.init + ",0";
+				printWriter.println(s);
+				size += (d.size * 8 + 8);
 			}
 			else{
 				String s = d.label.name + "\t" + "OCTA\t";
@@ -303,12 +301,12 @@ public class Compiler {
 
 		printWriter.println("Main\tSET $0,#0");
 
-		printWriter.println("\tSETH $252,#3000");
-
 		printWriter.println("\tSETH $254,#3FFF");
 		printWriter.println("\tINCMH $254,#FFFF");
 		printWriter.println("\tINCML $254,#FFFF");
 		printWriter.println("\tINCL $254,#FFFF");
+
+		printWriter.println("\tSETH $252,#3000");
 
 		printWriter.println("\tPUSHJ $0,_main");
 
@@ -391,9 +389,9 @@ public class Compiler {
 		printWriter.println("\tSET $253,$254");
 		printWriter.println("\tSET $0,16");
 		printWriter.println("\tSUB $254,$254,$0");
-		printWriter.println("\tLDA $255,InArgs");
+		printWriter.println("\tLDA $255,inA");
 		printWriter.println("\tTRAP 0,Fread,StdIn");
-		printWriter.println("\tLDA $255,charRead");
+		printWriter.println("\tLDA $255,charR");
 		printWriter.println("\tLDB $0,$255,0");
 		printWriter.println("\tSTO $0,$253,0");
 		printWriter.println("\tSET $0,$253");

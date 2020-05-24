@@ -69,7 +69,7 @@ fun main():integer =
     where
     {
       var n:integer
-      var qs: [32] integer
+      var qs:[32]integer
       fun queens(i:integer):integer =
           {
             if i==n then
