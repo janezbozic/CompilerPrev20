@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f8882136-713d-4797-9878-088ab3b80d2d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/prev/Compiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prev/Compiler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prev/phase/regall/RegAll.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prev/phase/regall/RegAll.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +77,7 @@
       <workItem from="1590399855975" duration="1577000" />
       <workItem from="1590493038720" duration="1016000" />
       <workItem from="1590494860699" duration="1415000" />
+      <workItem from="1590783026512" duration="325000" />
     </task>
     <task id="LOCAL-00001" summary="Narejena 11. naloga">
       <created>1589740750636</created>

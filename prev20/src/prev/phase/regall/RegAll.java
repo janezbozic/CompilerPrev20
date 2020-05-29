@@ -65,7 +65,7 @@ public class RegAll extends Phase {
 									AsmOPER newSub1 = new AsmOPER("SUB `d0,`s0,255", newDefs, newDefs, null);
 									code.instrs.add(i++, newSub1);
 									offi -= 255;
-								}TH
+								}
 								AsmOPER newSub2 = new AsmOPER("SUB `d0,`s0," + offi, newDefs, newDefs, null);
 								code.instrs.add(i++, newSub2);
 							} else {
