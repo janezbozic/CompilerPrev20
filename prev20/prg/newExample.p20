@@ -1,0 +1,14 @@
+fun putChar(c:char):void = none
+
+fun main():void =
+    {
+        n = (new (8): ^integer);
+        n^ = 1;
+        putChar(((n^+48):char));
+        putChar((10:char));
+        #del n;
+    }
+    where
+    {
+      var n: ^integer
+    }

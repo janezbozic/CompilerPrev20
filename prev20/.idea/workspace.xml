@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f8882136-713d-4797-9878-088ab3b80d2d" name="Default Changelist" comment="Popravljeni warningi">
+    <list default="true" id="f8882136-713d-4797-9878-088ab3b80d2d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prg/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/prg/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prg/mojTest.p20" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prg/perms.p20" beforeDir="false" afterPath="$PROJECT_DIR$/prg/perms.p20" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prg/queens-2.p20" beforeDir="false" afterPath="$PROJECT_DIR$/prg/queens-2.p20" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prg/retard.p20" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prg/test-03.mms" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prg/test-03.p20" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prg/test.mms" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/prev/Compiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prev/Compiler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/prev/phase/asmgen/ExprGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prev/phase/asmgen/ExprGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/prev/phase/regall/RegAll.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prev/phase/regall/RegAll.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +72,11 @@
       <workItem from="1590218032945" duration="1406000" />
       <workItem from="1590223356531" duration="2325000" />
       <workItem from="1590238699530" duration="13791000" />
-      <workItem from="1590321430732" duration="7154000" />
+      <workItem from="1590321430732" duration="7221000" />
+      <workItem from="1590336688967" duration="93000" />
+      <workItem from="1590399855975" duration="1577000" />
+      <workItem from="1590493038720" duration="1016000" />
+      <workItem from="1590494860699" duration="1415000" />
     </task>
     <task id="LOCAL-00001" summary="Narejena 11. naloga">
       <created>1589740750636</created>
@@ -126,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590263788463</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Koncan prevajalnik">
+      <created>1590336200902</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1590336200902</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,7 +140,8 @@
     <MESSAGE value="Uzivljanje" />
     <MESSAGE value="DELA" />
     <MESSAGE value="Poipravljanje in izboljsave" />
-    <option name="LAST_COMMIT_MESSAGE" value="Poipravljanje in izboljsave" />
+    <MESSAGE value="Koncan prevajalnik" />
+    <option name="LAST_COMMIT_MESSAGE" value="Koncan prevajalnik" />
   </component>
   <component name="WindowStateProjectService">
     <state x="755" y="415" width="785" height="421" key="#Scopes" timestamp="1589459355348">
@@ -158,10 +160,10 @@
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
     <state x="768" y="240" width="662" height="700" key="#com.intellij.ide.util.MemberChooser/0.28.1920.1052@0.28.1920.1052" timestamp="1590252430691" />
-    <state x="492" y="67" width="925" height="972" key="CommitChangelistDialog2" timestamp="1590263788358">
+    <state x="492" y="67" width="925" height="972" key="CommitChangelistDialog2" timestamp="1590336200690">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state x="492" y="67" width="925" height="972" key="CommitChangelistDialog2/0.28.1920.1052@0.28.1920.1052" timestamp="1590263788358" />
+    <state x="492" y="67" width="925" height="972" key="CommitChangelistDialog2/0.28.1920.1052@0.28.1920.1052" timestamp="1590336200690" />
     <state x="100" y="128" width="1720" height="852" key="DiffContextDialog" timestamp="1589788173544">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
@@ -174,10 +176,10 @@
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
     <state x="706" y="204" width="497" height="698" key="RollbackChangesDialog/0.28.1920.1052@0.28.1920.1052" timestamp="1590083855867" />
-    <state x="555" y="289" width="800" height="527" key="Vcs.Push.Dialog.v2" timestamp="1590263794656">
+    <state x="555" y="289" width="800" height="527" key="Vcs.Push.Dialog.v2" timestamp="1590336204782">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state x="555" y="289" width="800" height="527" key="Vcs.Push.Dialog.v2/0.28.1920.1052@0.28.1920.1052" timestamp="1590263794656" />
+    <state x="555" y="289" width="800" height="527" key="Vcs.Push.Dialog.v2/0.28.1920.1052@0.28.1920.1052" timestamp="1590336204782" />
     <state x="100" y="128" width="1720" height="852" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1590141870095">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
